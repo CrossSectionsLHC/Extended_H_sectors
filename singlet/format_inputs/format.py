@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 import mplhep as hep
 plt.style.use(hep.style.ROOT)
 
+import hist
+from hist import Hist
+
 folder_results = "singlet/13TteV/original_logs"
 
 sinTheta = range(0,10, 1)
@@ -56,7 +59,14 @@ for mass in masses:
                 count_entry_missing += 1
 
             #print(file_name, mass, ss/10, ll, check_file, cross_section)
-            df.loc[count_entry] = [mass, ss/10, ll, 1, cross_section]
+            def get_value(x):
+                if type(x) == str:
+                    return eval(x)
+                else:
+                    return x
+            if cross_section == -0.1:
+                print("ERROR", file_name, mass, ss/10, ll, check_file, cross_section)
+            df.loc[count_entry] = [get_value(mass), get_value(ss)/10, get_value(ll), 1,get_value(cross_section)]
             count_entry += 1 
 
 print (df[df["mass"] == 300])
@@ -71,16 +81,34 @@ print(    df['CX(pb)'].values,  #z,
     df['sinTheta'].values, #y, 
     )
 zlabel = "XS (pp -> X -> HH) (pb)"
-fig = plt.figure()
-plt.xlabel('lam112')
-plt.ylabel('sinTheta')
-cbar = hep.hist2dplot(
-    df['CX(pb)'].values,  #z, 
-    df['lam112'].values, # x, 
-    df['sinTheta'].values, #y, 
-    flow=None)
-cbar.cbar.ax.set_ylabel(zlabel, rotation=0, labelpad=labelpad)
-cbar.cbar.ax.tick_params(axis='y', labelrotation=0)
+fig = plt.figure(figsize=(8, 8))
+plt.xlabel('$\\lambda_{112}$') # lam112
+plt.ylabel('$\\sin\\theta$') # sinTheta
+
+# test_hist = Hist(hist.axis.Regular(10, -1, 1, name="sinTheta", label="sinTheta"),hist.axis.Regular(10, -300, 300, name="lam112", label="lam112"), hist.axis.Regular(10, 0, 1000, name="CX(pb)", label="CX(pb)"))
+# test_hist.fill(df['sinTheta'].values, df['lam112'].values, df['CX(pb)'].values)
+
+# test_hist.project("CX(pb)").plot()
+
+# cbar = hep.hist2dplot(
+#     df['CX(pb)'].values,  #z, 
+#     df['lam112'].values, # x, 
+#     df['sinTheta'].values, #y, 
+#     flow=None)
+# cbar.cbar.ax.set_ylabel(zlabel, rotation=0, labelpad=labelpad)
+# cbar.cbar.ax.tick_params(axis='y', labelrotation=0)
+
+print("test",df[df['mass']==300])
+
+CX = df['CX(pb)'][df['mass']==300].values.reshape(10,7)
+# print("lambda",df['lam112'].values.reshape(30,7))
+
+plt.imshow(CX, cmap='hot', interpolation='nearest')
+plt.xticks(np.arange(0, 7, 1), df['lam112'][df['mass']==300].values.reshape(10,7)[0],rotation=45)
+plt.yticks(np.arange(0, 10, 1), df['sinTheta'][df['mass']==300].values.reshape(10,7)[:,0])
+plt.colorbar()
+
+
 for ext in ('.png', '.pdf'):
     plt.savefig("singlet/13TteV/XS_MX_300_" + ext)
 

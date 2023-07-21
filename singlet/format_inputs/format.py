@@ -69,27 +69,15 @@ for mass in masses:
             df.loc[count_entry] = [get_value(mass), get_value(ss)/10, get_value(ll), 1,get_value(cross_section)]
             count_entry += 1 
 
-print (df[df["mass"] == 300])
-
 df.to_csv("singlet/13TteV/XS.csv", index=False)
-print(count_entry)
-#print (df_missing)
-print(count_entry_missing)
+print("total entries expected", count_entry)
+print("missing entries", count_entry_missing)
 
-print(    df['CX(pb)'].values,  #z, 
-    df['lam112'].values, # x, 
-    df['sinTheta'].values, #y, 
-    )
 zlabel = "XS (pp -> X -> HH) (pb)"
-fig = plt.figure(figsize=(8, 8))
-plt.xlabel('$\\lambda_{112}$') # lam112
-plt.ylabel('$\\sin\\theta$') # sinTheta
 
-# test_hist = Hist(hist.axis.Regular(10, -1, 1, name="sinTheta", label="sinTheta"),hist.axis.Regular(10, -300, 300, name="lam112", label="lam112"), hist.axis.Regular(10, 0, 1000, name="CX(pb)", label="CX(pb)"))
-# test_hist.fill(df['sinTheta'].values, df['lam112'].values, df['CX(pb)'].values)
 
-# test_hist.project("CX(pb)").plot()
-
+# that did not worked well, but for docs
+# https://github.com/bfonta/genproductions/blob/master/bin/MadGraph5_aMCatNLO/plots/plot_xsec.py#L131
 # cbar = hep.hist2dplot(
 #     df['CX(pb)'].values,  #z, 
 #     df['lam112'].values, # x, 
@@ -98,34 +86,21 @@ plt.ylabel('$\\sin\\theta$') # sinTheta
 # cbar.cbar.ax.set_ylabel(zlabel, rotation=0, labelpad=labelpad)
 # cbar.cbar.ax.tick_params(axis='y', labelrotation=0)
 
-print("test",df[df['mass']==300])
+for mass in masses:
+    fig = plt.figure(figsize=(8, 8))
+    plt.xlabel('$\\lambda_{112}$') # lam112
+    plt.ylabel('$\\sin\\theta$') # sinTheta
 
-CX = df['CX(pb)'][df['mass']==300].values.reshape(10,7)
-# print("lambda",df['lam112'].values.reshape(30,7))
+    CX = df['CX(pb)'][df['mass']==mass].values.reshape(10,7)
+    # print("lambda",df['lam112'].values.reshape(30,7))
+    plt.imshow(CX, cmap='hot', interpolation='nearest')
+    plt.xticks(np.arange(0, 7, 1), df['lam112'][df['mass']==mass].values.reshape(10,7)[0],rotation=45)
+    plt.yticks(np.arange(0, 10, 1), df['sinTheta'][df['mass']==mass].values.reshape(10,7)[:,0])
+    plt.colorbar()
+    for ext in ('.png', '.pdf'):
+        plt.savefig("singlet/13TteV/XS_MX_%s%s" % (mass, ext))
 
-plt.imshow(CX, cmap='hot', interpolation='nearest')
-plt.xticks(np.arange(0, 7, 1), df['lam112'][df['mass']==300].values.reshape(10,7)[0],rotation=45)
-plt.yticks(np.arange(0, 10, 1), df['sinTheta'][df['mass']==300].values.reshape(10,7)[:,0])
-plt.colorbar()
 
-
-for ext in ('.png', '.pdf'):
-    plt.savefig("singlet/13TteV/XS_MX_300_" + ext)
-
-"""
-fig, ax = plt.subplots()
-cc = ax.pcolormesh(
-    df['sinTheta'].values, 
-    df['lam112'].values, 
-    df['CX(pb)'].values, 
-    cmap='RdBu', 
-    #vmin=z_min, vmax=z_max
-    )
-ax.set_title('MX = %s, kl = 1' % str(2))
-# set the limits of the plot to the limits of the data
-#ax.axis([x.min(), x.max(), y.min(), y.max()])
-fig.colorbar(cc, ax=ax)
-"""
 
 # https://stackoverflow.com/questions/39727040/matplotlib-2d-plot-from-x-y-z-values
 # keep on naming convention of file kl1 (is that the 'K) ?

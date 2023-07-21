@@ -1,0 +1,136 @@
+************************************************************
+*                                                          *
+*                      W E L C O M E to                    *
+*             M A D G R A P H 5 _ a M C @ N L O            *
+*                      M A D E V E N T                     *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.7                 20xx-xx-xx         *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*                                                          *
+************************************************************
+INFO: load configuration from /home/bruno/NewScalars/Work/MG5_aMC_v2_9_7/gg_eta_s0/Cards/me5_configuration.txt  
+INFO: load configuration from /home/bruno/NewScalars/Work/MG5_aMC_v2_9_7/input/mg5_configuration.txt  
+INFO: load configuration from /home/bruno/NewScalars/Work/MG5_aMC_v2_9_7/gg_eta_s0/Cards/me5_configuration.txt  
+No valid eps viewer found. Please set in ./input/mg5_configuration.txt
+Using default web browser "firefox". Set another one in ./input/mg5_configuration.txt
+generate_events 
+stty: 'standard input': Inappropriate ioctl for device
+The following switches determine which programs are run:
+/===========================================================================\
+| 1. Choose the shower/hadronization program   [1m  shower[0m = [01mNot Avail.[0m        |
+| 2. Choose the detector simulation program    [1mdetector[0m = [01mNot Avail.[0m        |
+| 3. Choose an analysis package (plot/convert) [1manalysis[0m = [01mNot Avail.[0m        |
+| 4. Decay onshell particles                   [1m madspin[0m = [31mOFF[0m               |
+| 5. Add weights to events for new hypp.       [1mreweight[0m = [31mOFF[0m               |
+\===========================================================================/
+Either type the switch number (1 to 5) to change its setting,
+Set any switch explicitly (e.g. type 'madspin=ON' at the prompt)
+Type 'help' for the list of all valid option
+Type '0', 'auto', 'done' or just press enter when you are done.[60s to answer] 
+>stty: 'standard input': Inappropriate ioctl for device
+Do you want to edit a card (press enter to bypass editing)?
+/------------------------------------------------------------\
+|  [31m1[0m. param         : [32mparam_card.dat[0m                         |
+|  [31m2[0m. run           : [32mrun_card.dat[0m                           |
+|  [31m3[0m. MadLoopParams : [32mMadLoopParams.dat[0m                      |
+\------------------------------------------------------------/
+ you can also
+   - enter the path to a valid card or banner.
+   - use the 'set' command to modify a parameter directly.
+     The set option works only for param_card and run_card.
+     Type 'help set' for more information on this command.
+   - call an external program (ASperGE/MadWidth/...).
+     Type 'help' for the list of available command
+ [[4m0[0m, done, 1, param, 2, run, 3, MadLoopParams, enter path][90s to answer] 
+>INFO: Update the dependent parameter of the param_card.dat 
+Generating 10000 events with run name run_19
+survey  run_19 
+INFO: compile directory 
+initMadLoop -r -f
+Initializing MadLoop loop-induced matrix elements (this can take some time)...
+MadLoop initialization finished.
+compile Source Directory
+Using random number seed offset = 129
+INFO: Running Survey 
+Creating Jobs
+Working on SubProcesses
+INFO:     P0_gg_hh  
+INFO:  Idle: 1,  Running: 3,  Completed: 0 [ current time: 05h27 ] 
+INFO:  Idle: 0,  Running: 3,  Completed: 1 [  33.7s  ] 
+INFO: P0_gg_hh/G2 is at 0.014 +- 0.00051 pb. Now submitting iteration #2. 
+INFO:  Idle: 0,  Running: 3,  Completed: 4 [  1m 33s  ] 
+INFO: P0_gg_hh/G2 is at 0.01414 +- 6.41e-05 pb. Now submitting iteration #3. 
+INFO:  Idle: 0,  Running: 3,  Completed: 7 [  3m 31s  ] 
+INFO: Survey finished for P0_gg_hh/G2 at 0.01416 +- 2.1e-05 pb 
+INFO:  Idle: 0,  Running: 1,  Completed: 10 [  4m 1s  ] 
+INFO:  Idle: 1,  Running: 0,  Completed: 11 [  4m 22s  ] 
+INFO: P0_gg_hh/G1 is at 1.66e-05 +- 4.09e-06 pb. Now submitting iteration #2. 
+INFO:  Idle: 0,  Running: 1,  Completed: 13 [  5m 24s  ] 
+INFO: P0_gg_hh/G1 is at 6.04e-05 +- 8.73e-05 pb. Now submitting iteration #3. 
+INFO:  Idle: 0,  Running: 1,  Completed: 16 [  7m 33s  ] 
+INFO:  Idle: 1,  Running: 0,  Completed: 17 [  7m 39s  ] 
+INFO: P0_gg_hh/G1 is at 0.000159 +- 6.89e-05 pb. Now submitting iteration #4. 
+INFO:  Idle: 0,  Running: 1,  Completed: 19 [  12m 4s  ] 
+INFO: P0_gg_hh/G1 is at 0.000252 +- 1.88e-05 pb. Now submitting iteration #5. 
+INFO:  Idle: 0,  Running: 1,  Completed: 22 [  20m 20s  ] 
+INFO:  Idle: 1,  Running: 0,  Completed: 23 [  20m 49s  ] 
+INFO: Survey finished for P0_gg_hh/G1 at 0.000256 +- 3.36e-06 pb 
+INFO:  Idle: 0,  Running: 0,  Completed: 24 [  21m 20s  ] 
+INFO:  Idle: 0,  Running: 0,  Completed: 24 [  21m 20s  ] 
+INFO: End survey 
+refine 10000
+Creating Jobs
+INFO: Refine results to 10000 
+INFO: Generating 10000.0 unweighted events. 
+sum of cpu time of last step: 0 second
+INFO: Effective Luminosity 797579.7961247332 pb^-1 
+INFO: need to improve 2 channels 
+- Current estimate of cross-section: 0.01441862 +- 2.125466008314412e-05
+INFO:  Idle: 1,  Running: 8,  Completed: 0 [ current time: 05h49 ] 
+INFO:  Idle: 0,  Running: 8,  Completed: 1 [  42.4s  ] 
+INFO: found enough event for P0_gg_hh/G1 
+INFO:  Idle: 1,  Running: 0,  Completed: 10 [  1m 14s  ] 
+INFO: P0_gg_hh/G2 is at 3466/11312 (31%) event. Resubmit 4 job at iteration 1. 
+INFO:  Idle: 0,  Running: 3,  Completed: 12 [  1m 47s  ] 
+INFO: P0_gg_hh/G2 is at 3246/11344 (29%) event. Resubmit 10 job at iteration 2. 
+INFO:  Idle: 1,  Running: 8,  Completed: 17 [  2m 22s  ] 
+INFO:  Idle: 0,  Running: 1,  Completed: 25 [  2m 47s  ] 
+INFO: P0_gg_hh/G2 is at 7942/11336 ('70%') event. Resubmit 5 job at iteration 3. 
+INFO:  Idle: 0,  Running: 4,  Completed: 28 [  3m 17s  ] 
+INFO: found enough event for P0_gg_hh/G2 
+INFO:  Idle: 0,  Running: 0,  Completed: 33 [  3m 20s  ] 
+INFO: Combining runs 
+sum of cpu time of last step: 0 second
+INFO: finish refine 
+refine 10000 --treshold=0.9
+No need for second refine due to stability of cross-section
+INFO: Combining Events 
+ 
+ 
+ 
+  === Results Summary for run: run_19 tag: tag_1 ===
+
+     Cumulative sequential time for this run: 17m25s
+     Cross-section :   0.01449 +- 2.964e-05 pb
+     Nb of events :  10000
+ 
+INFO: No version of lhapdf. Can not run systematics computation 
+store_events
+INFO: Storing parton level results 
+INFO: End Parton 
+reweight -from_cards
+decay_events -from_cards
+INFO: storing files of previous run 
+INFO: Done 
+quit
+INFO:  

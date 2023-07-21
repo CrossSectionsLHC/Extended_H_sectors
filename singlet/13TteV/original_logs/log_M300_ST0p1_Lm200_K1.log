@@ -1,0 +1,233 @@
+************************************************************
+*                                                          *
+*                      W E L C O M E to                    *
+*             M A D G R A P H 5 _ a M C @ N L O            *
+*                      M A D E V E N T                     *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.7                 20xx-xx-xx         *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*                                                          *
+************************************************************
+INFO: load configuration from /home/bruno/NewScalars/Work/MG5_aMC_v2_9_7/gg_eta_s1/Cards/me5_configuration.txt  
+INFO: load configuration from /home/bruno/NewScalars/Work/MG5_aMC_v2_9_7/input/mg5_configuration.txt  
+INFO: load configuration from /home/bruno/NewScalars/Work/MG5_aMC_v2_9_7/gg_eta_s1/Cards/me5_configuration.txt  
+No valid eps viewer found. Please set in ./input/mg5_configuration.txt
+Using default web browser "firefox". Set another one in ./input/mg5_configuration.txt
+generate_events 
+stty: 'standard input': Inappropriate ioctl for device
+The following switches determine which programs are run:
+/===========================================================================\
+| 1. Choose the shower/hadronization program   [1m  shower[0m = [01mNot Avail.[0m        |
+| 2. Choose the detector simulation program    [1mdetector[0m = [01mNot Avail.[0m        |
+| 3. Choose an analysis package (plot/convert) [1manalysis[0m = [01mNot Avail.[0m        |
+| 4. Decay onshell particles                   [1m madspin[0m = [31mOFF[0m               |
+| 5. Add weights to events for new hypp.       [1mreweight[0m = [31mOFF[0m               |
+\===========================================================================/
+Either type the switch number (1 to 5) to change its setting,
+Set any switch explicitly (e.g. type 'madspin=ON' at the prompt)
+Type 'help' for the list of all valid option
+Type '0', 'auto', 'done' or just press enter when you are done.[60s to answer] 
+>stty: 'standard input': Inappropriate ioctl for device
+Do you want to edit a card (press enter to bypass editing)?
+/------------------------------------------------------------\
+|  [31m1[0m. param         : [32mparam_card.dat[0m                         |
+|  [31m2[0m. run           : [32mrun_card.dat[0m                           |
+|  [31m3[0m. MadLoopParams : [32mMadLoopParams.dat[0m                      |
+\------------------------------------------------------------/
+ you can also
+   - enter the path to a valid card or banner.
+   - use the 'set' command to modify a parameter directly.
+     The set option works only for param_card and run_card.
+     Type 'help set' for more information on this command.
+   - call an external program (ASperGE/MadWidth/...).
+     Type 'help' for the list of available command
+ [[4m0[0m, done, 1, param, 2, run, 3, MadLoopParams, enter path][90s to answer] 
+>INFO: Update the dependent parameter of the param_card.dat 
+Generating 10000 events with run name run_02
+survey  run_02 
+INFO: compile directory 
+initMadLoop -r -f
+Initializing MadLoop loop-induced matrix elements (this can take some time)...
+MadLoop initialization finished.
+compile Source Directory
+Using random number seed offset = 39
+INFO: Running Survey 
+Creating Jobs
+Working on SubProcesses
+INFO:     P0_gg_hh  
+INFO:  Idle: 4,  Running: 0,  Completed: 0 [ current time: 17h06 ] 
+INFO:  Idle: 0,  Running: 3,  Completed: 1 [  58s  ] 
+INFO:  Idle: 1,  Running: 2,  Completed: 2 [  1m 1s  ] 
+INFO: P0_gg_hh/G1 is at 0.00282 +- 0.000183 pb. Now submitting iteration #2. 
+INFO: P0_gg_hh/G2 is at 0.0126 +- 0.00048 pb. Now submitting iteration #2. 
+INFO:  Idle: 0,  Running: 3,  Completed: 7 [  2m 28s  ] 
+INFO: P0_gg_hh/G1 is at 0.002811 +- 4.39e-06 pb. Now submitting iteration #3. 
+INFO: P0_gg_hh/G2 is at 0.0118 +- 0.000266 pb. Now submitting iteration #3. 
+INFO:  Idle: 0,  Running: 3,  Completed: 13 [  5m 21s  ] 
+INFO: Survey finished for P0_gg_hh/G1 at 0.002831 +- 9.23e-06 pb 
+INFO: Survey finished for P0_gg_hh/G2 at 0.01186 +- 8.93e-05 pb 
+INFO:  Idle: 0,  Running: 0,  Completed: 18 [  5m 23s  ] 
+INFO: End survey 
+refine 10000
+Creating Jobs
+INFO: Refine results to 10000 
+INFO: Generating 10000.0 unweighted events. 
+sum of cpu time of last step: 0 second
+INFO: Effective Luminosity 782760.216722481 pb^-1 
+INFO: need to improve 2 channels 
+- Current estimate of cross-section: 0.014691599999999999 +- 8.978332429220919e-05
+INFO:  Idle: 4,  Running: 5,  Completed: 0 [ current time: 17h11 ] 
+INFO:  Idle: 1,  Running: 8,  Completed: 1 [  2m 58s  ] 
+INFO:  Idle: 0,  Running: 8,  Completed: 2 [  3m 59s  ] 
+INFO: P0_gg_hh/G2 is at 2432/9190 (26%) event. Resubmit 1 job at iteration 1. 
+INFO:  Idle: 0,  Running: 5,  Completed: 6 [  4m 2s  ] 
+INFO:  Idle: 1,  Running: 1,  Completed: 10 [  6m 28s  ] 
+INFO: P0_gg_hh/G2 is at 4553/9186 (50%) event. Resubmit 3 job at iteration 2. 
+INFO: P0_gg_hh/G1 is at 57/2475 (2.3%) event. Resubmit 20 job at iteration 1. 
+INFO:  Idle: 14,  Running: 8,  Completed: 14 [  9m 8s  ] 
+INFO:  Idle: 12,  Running: 8,  Completed: 17 [  9m 52s  ] 
+INFO:  Idle: 11,  Running: 8,  Completed: 18 [  9m 56s  ] 
+INFO:  Idle: 10,  Running: 8,  Completed: 19 [  10m 2s  ] 
+INFO:  Idle: 7,  Running: 8,  Completed: 22 [  12m 32s  ] 
+INFO:  Idle: 6,  Running: 8,  Completed: 23 [  12m 37s  ] 
+INFO:  Idle: 4,  Running: 8,  Completed: 25 [  13m 23s  ] 
+INFO:  Idle: 1,  Running: 8,  Completed: 28 [  13m 34s  ] 
+INFO: found enough event for P0_gg_hh/G2 
+INFO:  Idle: 0,  Running: 6,  Completed: 31 [  15m 48s  ] 
+INFO:  Idle: 0,  Running: 5,  Completed: 32 [  16m 9s  ] 
+INFO:  Idle: 0,  Running: 3,  Completed: 34 [  16m 52s  ] 
+INFO:  Idle: 1,  Running: 0,  Completed: 37 [  17m 2s  ] 
+INFO: P0_gg_hh/G1 is at 204/2377 (8.6%) event. Resubmit 50 job at iteration 2. 
+INFO:  Idle: 41,  Running: 8,  Completed: 39 [  21m 25s  ] 
+INFO:  Idle: 35,  Running: 8,  Completed: 45 [  21m 28s  ] 
+INFO:  Idle: 33,  Running: 8,  Completed: 47 [  25m 34s  ] 
+INFO:  Idle: 29,  Running: 8,  Completed: 51 [  25m 37s  ] 
+INFO:  Idle: 25,  Running: 8,  Completed: 55 [  29m 12s  ] 
+INFO:  Idle: 23,  Running: 8,  Completed: 57 [  29m 16s  ] 
+INFO:  Idle: 20,  Running: 8,  Completed: 60 [  29m 19s  ] 
+INFO:  Idle: 17,  Running: 8,  Completed: 63 [  33m 33s  ] 
+INFO:  Idle: 14,  Running: 8,  Completed: 66 [  33m 39s  ] 
+INFO:  Idle: 12,  Running: 8,  Completed: 68 [  33m 43s  ] 
+INFO:  Idle: 9,  Running: 8,  Completed: 71 [  37m 35s  ] 
+INFO:  Idle: 7,  Running: 8,  Completed: 73 [  37m 39s  ] 
+INFO:  Idle: 5,  Running: 8,  Completed: 75 [  37m 42s  ] 
+INFO:  Idle: 2,  Running: 8,  Completed: 78 [  37m 46s  ] 
+INFO:  Idle: 1,  Running: 8,  Completed: 79 [  41m 37s  ] 
+INFO:  Idle: 0,  Running: 6,  Completed: 82 [  41m 41s  ] 
+INFO:  Idle: 0,  Running: 5,  Completed: 83 [  41m 44s  ] 
+INFO:  Idle: 0,  Running: 1,  Completed: 87 [  45m 0s  ] 
+INFO: P0_gg_hh/G1 is at 457/2401 ('19%') event. Resubmit 75 job at iteration 3. 
+INFO:  Idle: 67,  Running: 8,  Completed: 89 [  45m 4s  ] 
+INFO:  Idle: 66,  Running: 8,  Completed: 90 [  49m 38s  ] 
+INFO:  Idle: 61,  Running: 8,  Completed: 95 [  49m 41s  ] 
+INFO:  Idle: 58,  Running: 8,  Completed: 98 [  54m 23s  ] 
+INFO:  Idle: 55,  Running: 8,  Completed: 101 [  54m 26s  ] 
+INFO:  Idle: 52,  Running: 8,  Completed: 104 [  54m 29s  ] 
+INFO:  Idle: 50,  Running: 8,  Completed: 106 [  58m 26s  ] 
+INFO:  Idle: 47,  Running: 8,  Completed: 109 [  58m 31s  ] 
+INFO:  Idle: 42,  Running: 8,  Completed: 114 [  1h 2m  ] 
+INFO:  Idle: 39,  Running: 8,  Completed: 117 [  1h 2m  ] 
+INFO:  Idle: 34,  Running: 8,  Completed: 122 [  1h 5m  ] 
+INFO:  Idle: 30,  Running: 8,  Completed: 126 [  1h 5m  ] 
+INFO:  Idle: 26,  Running: 8,  Completed: 130 [  1h 10m  ] 
+INFO:  Idle: 25,  Running: 8,  Completed: 131 [  1h 10m  ] 
+INFO:  Idle: 22,  Running: 8,  Completed: 134 [  1h 10m  ] 
+INFO:  Idle: 20,  Running: 8,  Completed: 136 [  1h 10m  ] 
+INFO:  Idle: 18,  Running: 8,  Completed: 138 [  1h 14m  ] 
+INFO:  Idle: 17,  Running: 8,  Completed: 139 [  1h 14m  ] 
+INFO:  Idle: 16,  Running: 8,  Completed: 140 [  1h 15m  ] 
+INFO:  Idle: 14,  Running: 8,  Completed: 142 [  1h 15m  ] 
+INFO:  Idle: 12,  Running: 8,  Completed: 144 [  1h 15m  ] 
+INFO:  Idle: 10,  Running: 8,  Completed: 146 [  1h 18m  ] 
+INFO:  Idle: 9,  Running: 8,  Completed: 147 [  1h 18m  ] 
+INFO:  Idle: 6,  Running: 8,  Completed: 150 [  1h 18m  ] 
+INFO:  Idle: 4,  Running: 8,  Completed: 152 [  1h 18m  ] 
+INFO:  Idle: 2,  Running: 8,  Completed: 154 [  1h 21m  ] 
+INFO:  Idle: 1,  Running: 8,  Completed: 155 [  1h 21m  ] 
+INFO:  Idle: 0,  Running: 7,  Completed: 157 [  1h 21m  ] 
+INFO:  Idle: 0,  Running: 6,  Completed: 158 [  1h 21m  ] 
+INFO:  Idle: 0,  Running: 4,  Completed: 160 [  1h 21m  ] 
+INFO:  Idle: 0,  Running: 2,  Completed: 162 [  1h 24m  ] 
+INFO:  Idle: 0,  Running: 1,  Completed: 163 [  1h 24m  ] 
+INFO: P0_gg_hh/G1 is at 1740/2385 ('73%') event. Resubmit 110 job at iteration 4. 
+INFO:  Idle: 102,  Running: 8,  Completed: 165 [  1h 25m  ] 
+INFO:  Idle: 101,  Running: 8,  Completed: 166 [  1h 29m  ] 
+INFO:  Idle: 97,  Running: 8,  Completed: 170 [  1h 29m  ] 
+INFO:  Idle: 93,  Running: 8,  Completed: 174 [  1h 34m  ] 
+INFO:  Idle: 88,  Running: 8,  Completed: 179 [  1h 34m  ] 
+INFO:  Idle: 85,  Running: 8,  Completed: 182 [  1h 38m  ] 
+INFO:  Idle: 80,  Running: 8,  Completed: 187 [  1h 38m  ] 
+INFO:  Idle: 78,  Running: 8,  Completed: 189 [  1h 38m  ] 
+INFO:  Idle: 77,  Running: 8,  Completed: 190 [  1h 42m  ] 
+INFO:  Idle: 74,  Running: 8,  Completed: 193 [  1h 42m  ] 
+INFO:  Idle: 70,  Running: 8,  Completed: 197 [  1h 42m  ] 
+INFO:  Idle: 69,  Running: 8,  Completed: 198 [  1h 47m  ] 
+INFO:  Idle: 67,  Running: 8,  Completed: 200 [  1h 47m  ] 
+INFO:  Idle: 63,  Running: 8,  Completed: 204 [  1h 47m  ] 
+INFO:  Idle: 61,  Running: 8,  Completed: 206 [  1h 50m  ] 
+INFO:  Idle: 59,  Running: 8,  Completed: 208 [  1h 50m  ] 
+INFO:  Idle: 54,  Running: 8,  Completed: 213 [  1h 50m  ] 
+INFO:  Idle: 53,  Running: 8,  Completed: 214 [  1h 54m  ] 
+INFO:  Idle: 52,  Running: 8,  Completed: 215 [  1h 54m  ] 
+INFO:  Idle: 48,  Running: 8,  Completed: 219 [  1h 54m  ] 
+INFO:  Idle: 45,  Running: 8,  Completed: 222 [  1h 58m  ] 
+INFO:  Idle: 44,  Running: 8,  Completed: 223 [  1h 58m  ] 
+INFO:  Idle: 40,  Running: 8,  Completed: 227 [  1h 58m  ] 
+INFO:  Idle: 38,  Running: 8,  Completed: 229 [  1h 58m  ] 
+INFO:  Idle: 37,  Running: 8,  Completed: 230 [  2h 2m  ] 
+INFO:  Idle: 36,  Running: 8,  Completed: 231 [  2h 2m  ] 
+INFO:  Idle: 32,  Running: 8,  Completed: 235 [  2h 2m  ] 
+INFO:  Idle: 29,  Running: 8,  Completed: 238 [  2h 6m  ] 
+INFO:  Idle: 27,  Running: 8,  Completed: 240 [  2h 6m  ] 
+INFO:  Idle: 25,  Running: 8,  Completed: 242 [  2h 6m  ] 
+INFO:  Idle: 22,  Running: 8,  Completed: 245 [  2h 6m  ] 
+INFO:  Idle: 21,  Running: 8,  Completed: 246 [  2h 10m  ] 
+INFO:  Idle: 20,  Running: 8,  Completed: 247 [  2h 10m  ] 
+INFO:  Idle: 17,  Running: 8,  Completed: 250 [  2h 10m  ] 
+INFO:  Idle: 14,  Running: 8,  Completed: 253 [  2h 10m  ] 
+INFO:  Idle: 13,  Running: 8,  Completed: 254 [  2h 14m  ] 
+INFO:  Idle: 10,  Running: 8,  Completed: 257 [  2h 14m  ] 
+INFO:  Idle: 7,  Running: 8,  Completed: 260 [  2h 14m  ] 
+INFO:  Idle: 5,  Running: 8,  Completed: 262 [  2h 19m  ] 
+INFO:  Idle: 1,  Running: 8,  Completed: 266 [  2h 19m  ] 
+INFO:  Idle: 0,  Running: 6,  Completed: 269 [  2h 19m  ] 
+INFO:  Idle: 0,  Running: 5,  Completed: 270 [  2h 23m  ] 
+INFO:  Idle: 0,  Running: 2,  Completed: 273 [  2h 23m  ] 
+INFO: found enough event for P0_gg_hh/G1 
+INFO:  Idle: 0,  Running: 0,  Completed: 276 [  2h 23m  ] 
+INFO:  Idle: 0,  Running: 0,  Completed: 276 [  2h 23m  ] 
+INFO: Combining runs 
+sum of cpu time of last step: 0 second
+INFO: finish refine 
+refine 10000 --treshold=0.9
+No need for second refine due to stability of cross-section
+INFO: Combining Events 
+ 
+ 
+ 
+  === Results Summary for run: run_02 tag: tag_1 ===
+
+     Cumulative sequential time for this run: 2h51m21s
+     Cross-section :   0.01481 +- 3.462e-05 pb
+     Nb of events :  10000
+ 
+INFO: No version of lhapdf. Can not run systematics computation 
+store_events
+INFO: Storing parton level results 
+INFO: End Parton 
+reweight -from_cards
+decay_events -from_cards
+INFO: storing files of previous run 
+INFO: Done 
+quit
+INFO:  

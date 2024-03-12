@@ -1,0 +1,3 @@
+Computed with MadGraph v....
+With the run card present in this folder
+

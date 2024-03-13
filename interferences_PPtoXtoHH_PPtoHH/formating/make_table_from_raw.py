@@ -146,9 +146,9 @@ plt.clf()
 #################################################
 
 for g_o_m in g_o_ms : 
-    plt.plot(df_cx_total["Mass[Gev]"].loc[df_cx_total["GoM"] == g_o_m], df_cx_total["sigma[pb]_SChan_h_SChan_eta0"].loc[df_cx_total["GoM"] == g_o_m], marker=".", label='Triangle X resonance, G/M = %s'  % str(g_o_m)) 
+    plt.plot(df_cx_total["Mass[Gev]"].loc[df_cx_total["GoM"] == g_o_m], df_cx_total["sigma[pb]_SChan_h_SChan_eta0"].loc[df_cx_total["GoM"] == g_o_m], marker=".", label='Triangle X resn., G/M = %s'  % str(g_o_m)) 
 for g_o_m in g_o_ms : 
-    plt.plot(df_cx_total["Mass[Gev]"].loc[df_cx_total["GoM"] == g_o_m], df_cx_total["sigma[pb]_BOX_SChan_eta0"].loc[df_cx_total["GoM"] == g_o_m], marker=".", label='Box X resonance, G/M = %s' % str(g_o_m)) 
+    plt.plot(df_cx_total["Mass[Gev]"].loc[df_cx_total["GoM"] == g_o_m], df_cx_total["sigma[pb]_BOX_SChan_eta0"].loc[df_cx_total["GoM"] == g_o_m], marker=".", label='Box X reson., G/M = %s' % str(g_o_m)) 
 
 plt.xlabel("Mass [GeV]")
 plt.ylabel("sigma(pp to hh)[pb]")

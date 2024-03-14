@@ -43,7 +43,7 @@ table = pd.read_csv("interferences_PPtoXtoHH_PPtoHH/cross_sections_for_mass_widt
 print(cross_sections_parts(GoM, MX, kt, ktH, k_hhh, kap_hhH, table)) 
 
 # draw a line scanning kap_hhH from 0 - 100
-scan_kap_hhH = [*range(0, 40, 1)] + [*range(50, 110, 10)] 
+scan_kap_hhH = [*range(0, 40, 1)] + [*range(50, 110, 10)] + [*range(200, 1100, 100)] 
 print(scan_kap_hhH)
 cx_kl_1_kt_1_full = [cross_sections_parts(GoM, MX, kt, ktH, k_hhh, kap_hhH_scan, table)["full"] for kap_hhH_scan in scan_kap_hhH]
 cx_kl_1_kt_1_res = [cross_sections_parts(GoM, MX, kt, ktH, k_hhh, kap_hhH_scan, table)["resonant_XS"] for kap_hhH_scan in scan_kap_hhH]
@@ -83,4 +83,26 @@ plt.legend()
 plt.savefig('interferences_PPtoXtoHH_PPtoHH/%s.png' % plot_type)
 plt.clf()
 
+plot_type = "GoM_scan_kl_1_kap_hhH_31p8_kt_1"
+GoM = [0.001, 0.01, 0.05, 0.1]
 
+k_hhh = 10
+kap_hhH = 31.8
+
+cx_kl_1_kt_1_full = [cross_sections_parts(GoMs, MX, kt, ktH, k_hhh, kap_hhH, table)["full"] for GoMs in GoM]
+cx_kl_1_kt_1_res = [cross_sections_parts(GoMs, MX, kt, ktH, k_hhh, kap_hhH, table)["resonant_XS"] for GoMs in GoM]
+cx_kl_1_kt_1_int = [cross_sections_parts(GoMs, MX, kt, ktH, k_hhh, kap_hhH, table)["res_nonres_int_XS"] for GoMs in GoM]
+
+plt.plot(GoM, cx_kl_1_kt_1_full, marker=".", label="full",linewidth=3.0) 
+plt.plot(GoM, cx_kl_1_kt_1_res, marker=".", label="resonant-only",linewidth=3.0) 
+plt.plot(GoM, cx_kl_1_kt_1_int, marker=".", label="interference",linewidth=3.0) 
+
+plt.xlabel("kappa hhH")
+plt.title("MX = %s GeV | kap_hhH = 31.8 | kl = 10 | kt = 1" % (str(MX)))
+plt.ylabel("sigma ( pp to (X to) HH)[pb]")
+plt.xlabel("G/M")
+plt.yscale("log")
+plt.xscale("log")
+plt.legend()
+plt.savefig('interferences_PPtoXtoHH_PPtoHH/%s.png' % plot_type)
+plt.clf()

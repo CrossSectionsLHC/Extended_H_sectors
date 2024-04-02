@@ -132,7 +132,10 @@ df_cx_total["kfactor_SChan_h_SChan_eta0_eff"] = ((BOX_SChan_h_NLO/SChan_h_LO)*df
 df_cx_total["kfactor_BOX_SChan_eta0_eff"]     = ((BOX_NLO/BOX_LO)*df_cx_total["kfactor_SChan_eta0_eff"])/2.
 
 #print(df_cx_total[["kfactor_SChan_h_SChan_eta0_eff", "kfactor_BOX_SChan_eta0_eff"]])
-df_cx_total["sigma[pb]_SChan_eta0"]         = df_cx_total["kfactor_SChan_eta0_eff"]*df_cx_total["sigma[pb]_SChan_eta0"]
+
+
+df_cx_total["sigma[pb]_SChan_eta0_no_HH_decay"] = df_cx_total["kfactor_SChan_eta0_eff"]*df_cx_total["sigma[pb]_SChan_eta0_no_HH_decay"] 
+df_cx_total["sigma[pb]_SChan_eta0"]         = df_cx_total["kfactor_SChan_eta0_eff"]*df_cx_total["sigma[pb]_SChan_eta0"] # divide by BR to correct later ?? just use the above...
 df_cx_total["sigma[pb]_SChan_h_SChan_eta0"] = df_cx_total["kfactor_SChan_h_SChan_eta0_eff"]*df_cx_total["sigma[pb]_SChan_h_SChan_eta0"]
 df_cx_total["sigma[pb]_BOX_SChan_eta0"]     = df_cx_total["kfactor_BOX_SChan_eta0_eff"]*df_cx_total["sigma[pb]_BOX_SChan_eta0"]
 
@@ -148,7 +151,7 @@ for plot_type in ["width_HH", "BR_HH_TWIKI", "sigma_prod_pb_%s" % ("SChan_eta0")
 
 for g_o_m_local in g_o_ms :
     for g_o_m in g_o_ms : 
-        plt.plot(df_cx_total["Mass[Gev]"].loc[df_cx_total["GoM"] == g_o_m], df_cx_total["BR_HH_TWIKI"].loc[df_cx_total["GoM"] == g_o_m], marker=".", label='G/M = %s (from TWIKI)' % str(g_o_m),linewidth=3.0) 
+        plt.plot(df_cx_total["Mass[Gev]"].loc[df_cx_total["GoM"] == g_o_m], df_cx_total["BR_HH_TWIKI"].loc[df_cx_total["GoM"] == g_o_m], marker=".", label='G/M = %s (from formula)' % str(g_o_m),linewidth=3.0) 
 
     for g_o_m in g_o_ms : 
         plt.plot(df_cx_total["Mass[Gev]"].loc[df_cx_total["GoM"] == g_o_m], df_cx_total["BR_HH_MG" ].loc[df_cx_total["GoM"] == g_o_m], marker=".", label='G/M = %s (from MG)' % str(g_o_m),linewidth=3.0) 

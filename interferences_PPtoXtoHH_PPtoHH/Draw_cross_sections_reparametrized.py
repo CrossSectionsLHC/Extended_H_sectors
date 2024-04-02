@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib.colors import LogNorm, Normalize
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -28,17 +29,19 @@ def cross_sections_parts(GoM, MX, sin_alpha, kl, table):
     #print(table)
     #print(table.loc[(table["GoM"] == GoM) & (table["Mass[Gev]"] == MX)][["sigma[pb]_SChan_eta0", "sigma[pb]_BOX_SChan_eta0", "sigma[pb]_SChan_h_SChan_eta0"]])
     # taken from our table with all correction factors on (pb)
-    resonant = table.loc[(table["GoM"] == GoM) & (table["Mass[Gev]"] == MX)]["sigma[pb]_SChan_eta0"].values[0] 
+    #resonant = table.loc[(table["GoM"] == GoM) & (table["Mass[Gev]"] == MX)]["sigma[pb]_SChan_eta0"].values[0] 
+    resonant = table.loc[(table["GoM"] == GoM) & (table["Mass[Gev]"] == MX)]["sigma[pb]_SChan_eta0_no_HH_decay"].values[0] 
     res_box = table.loc[(table["GoM"] == GoM) & (table["Mass[Gev]"] == MX)]["sigma[pb]_BOX_SChan_eta0"].values[0]
     res_trangle = table.loc[(table["GoM"] == GoM) & (table["Mass[Gev]"] == MX)]["sigma[pb]_SChan_h_SChan_eta0"].values[0]
 
     nonresonant_XS = xs_box_nnlo * kt**4 + xs_Sh_nnlo * kt**2 * (kap_hhh)**2 + xs_box_Sh_int_nnlo * kt**3 * kap_hhh
-    resonant_XS = resonant * ktH**2 * kap_hhH**2
     res_nonres_int_XS = kap_hhH * (res_box * kt**2 * ktH  + res_trangle * kap_hhh * ktH * kt )
 
     width_HH = (1-4*mh**2/MX**2)**0.5/(8*3.1415*MX)# kap_hhH**2 #*
     width_SM = sin_alpha**2*table.loc[(table["GoM"] == GoM) & (table["Mass[Gev]"] == MX)]["GammaH_twiki[GeV]"].values[0]
+    BR_HH = width_HH/(width_HH + width_SM)
 
+    resonant_XS = (resonant * ktH**2 * kap_hhH**2)*BR_HH
     return {
         "nonresonant_XS" : nonresonant_XS,
         "resonant_XS" : resonant_XS,
@@ -118,12 +121,17 @@ for gg, gom in enumerate([0.001, 0.01, 0.05, 0.1]):
         ax = fig.add_subplot(111)
         for var in variables:
             df_pivoted = df_kl_1.pivot(columns='Mass[Gev]', index='sin_alpha', values=var)
-            ax = sns.heatmap(data=df_pivoted, annot=False, fmt='f', cmap='RdYlGn', cbar=True, cbar_kws={'label': var}, square=True) #  annot=True,
+            if var in ["resonant_XS", 'GoM', "BR_HH"] :
+                ax = sns.heatmap(data=df_pivoted, annot=False, fmt='f', cmap='RdYlGn', cbar=True, cbar_kws={'label': var}, square=True, norm=LogNorm()) #  annot=True,
+            else:
+                ax = sns.heatmap(data=df_pivoted, annot=False, fmt='f', cmap='RdYlGn', cbar=True, cbar_kws={'label': var}, square=True) 
             ax.tick_params(labelrotation=0)
             plt.title("kl = %s, raw GoM = %s" % (str(kl), str(gom)))
             #plt.tight_layout(pad=1)
             outfile = 'interferences_PPtoXtoHH_PPtoHH/scan_singlet_Z2/%s_scan_singlet_Z2_raw_GoM_%s_kl_%s.png' % (var, str(gom).replace(".", "o"), str(kl).replace(".", "o"))
             plt.savefig(outfile)
+            
+
             print("Saved %s" % outfile)
             plt.clf()
             #########################################
